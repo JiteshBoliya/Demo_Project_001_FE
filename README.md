@@ -1,6 +1,7 @@
 # Demo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.1.
+In this project Login/register page with social login and admin panal with crude opartion and filter like sort and paggination server side
 
 ## Development server
 
