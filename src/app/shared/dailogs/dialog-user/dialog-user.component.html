@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title><img
+                src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/47553/pencil-emoji-clipart-md.png"
+                alt="" height="20px" srcset=""> Create Assignment</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form" [formGroup]="assignmentForm" (ngSubmit)="submitdata()">
+            <hr>
+            <!-- Title -->
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput type="text" formControlName="title" name="title" required />
+            </mat-form-field>
+
+            <!-- Description -->
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" name="description"></textarea>
+            </mat-form-field>
+
+            <!-- Points -->
+            <mat-form-field appearance="fill">
+                <mat-label>Points</mat-label>
+                <input matInput type="number" formControlName="points" name="points" required />
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <!-- Duedate -->
+                <mat-label>Due Date</mat-label>
+                <input matInput type="date" name="duedate" formControlName="duedate" required />
+            </mat-form-field>
+
+            <!-- file-upload -->
+            <button type="button" mat-raised-button (click)="fileInput.click()"> Choose File</button>
+            <input hidden (change)="uploadFileEvt($event)" #fileInput formControlName="file" multiple name="file"
+                type="file" id="file"><i>{{text}}</i>
+
+            <hr>
+            <mat-card-actions>
+                <button mat-raised-button mat-dialog-close type="submit" class="form-control" color="primary">
+                    Create
+                </button>
+            </mat-card-actions>
+        </form>
+    </mat-card-content>
+</mat-card>

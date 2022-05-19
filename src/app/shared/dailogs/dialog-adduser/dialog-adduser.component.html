@@ -1,0 +1,137 @@
+<form
+  style="width: 100%"
+  [formGroup]="userForm"
+  (ngSubmit)="submitdata('insered', 'close', 'success')"
+>
+  <div class="container" align="center">
+    <h2 *ngIf="userData == ''">Add User</h2>
+    <h2 *ngIf="userData != ''">Update User</h2>
+
+    <hr />
+    <!-- <span>Profile Image</span><br /> -->
+
+    <img
+      [src]="imageSrc"
+      class="img-circle"
+      height="80px"
+      width="80px"
+      alt="User Image"
+    />
+    <br />
+    <button
+      type="button"
+      mat-raised-button
+      (click)="fileInput.click()"
+      style="
+        background-color: green;
+        border-radius: 50px;
+        color: white;
+        position: relative;
+        top: -20px;
+        width: 20px;
+      "
+    >
+      +
+    </button>
+    <input
+      hidden
+      (change)="uploadFileEvt($event)"
+      #fileInput
+      formControlName="file"
+      name="file"
+      type="file"
+      id="file"
+      value="{{userData?userData.file:''}}"
+    />
+    <br />
+    <mat-form-field
+      class="example-full-width"
+      appearance="fill"
+      style="width: 100%"
+    >
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        value="{{ userData ? userData.name : '' }}"
+        formControlName="name"
+        type="text"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field
+      class="example-full-width"
+      appearance="fill"
+      style="width: 100%"
+    >
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email"
+        value="{{ userData ? userData.email : '' }}"
+      />
+    </mat-form-field>
+    <br />
+
+    <mat-form-field
+      class="example-full-width"
+      style="width: 50%; margin-right: 5%"
+    >
+      <mat-label>Mobile no</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="mobileno"
+        value="{{ userData ? userData.mobileno : '' }}"
+      />
+    </mat-form-field>
+
+    <!-- <br><mat-label>Gender</mat-label>
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-radio-button value="Male" style="margin-left: 20px;">Male</mat-radio-button>
+        <mat-radio-button value="Female" style="margin-left: 20px;">Female</mat-radio-button>
+      </mat-radio-group>
+      <br> -->
+    <mat-form-field style="width: 45%">
+      <mat-select
+        formControlName="gender"
+        value="{{ userData ? userData.gender : '' }}"
+        placeholder="Gender"
+      >
+        <mat-option
+          value="Male"
+          >Male</mat-option
+        >
+        <mat-option
+          value="Female"
+          >Female</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <br />
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>Choose a date</mat-label>
+      <input matInput formControlName="dob" [matDatepicker]="picker" value="{{userData?userData.dob:''}}"/>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br /><br />
+    <button
+      *ngIf="userData == ''"
+      mat-dialog-close
+      type="submit"
+      class="btn btn-success"
+      [disabled]="!userForm.valid"
+    >
+      Save
+    </button>
+    <button [disabled]="!userForm.valid" *ngIf="userData != ''" mat-dialog-close type="submit" class="btn btn-warning">
+      Update
+    </button>
+    <button class="btn btn-primary" style="margin-left: 10px" (click)="clear()">
+      Clear
+    </button>
+  </div>
+</form>
