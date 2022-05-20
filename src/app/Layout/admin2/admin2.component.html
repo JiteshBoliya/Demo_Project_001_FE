@@ -278,6 +278,8 @@
                           style="color: red; cursor: pointer"
                           (click)="onDelete(user._id)"
                         ></i>
+                         <!-- | -->
+                        <!-- <i class="fa fa-envelope" style="color: blue; cursor: pointer"></i> -->
                         <!-- </button>    -->
                       </td>
                     </tr>
@@ -300,7 +302,7 @@
 
                 <div class="pagination"  >
                   <a style="cursor: pointer;" (click)="getpagedata(0)">&laquo;</a>
-                  <a  style="cursor: pointer;" *ngFor="let a of fakearray; let index = index" (click)="getpagedata(index)" >{{index+1}}</a>
+                  <a  style="cursor: pointer;" [ngClass]="{aactive: pageActive(index)}" *ngFor="let a of fakearray; let index = index" (click)="getpagedata(index)" >{{index+1}}</a>
                   <a style="cursor: pointer;" (click)="getpagedata(paggerno-1)">&raquo;</a>
                 </div>
                 </div>

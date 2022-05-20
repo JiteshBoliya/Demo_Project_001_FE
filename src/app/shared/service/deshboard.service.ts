@@ -9,6 +9,7 @@ export class DeshboardService {
   private userlistUrl="http://localhost:3000/userlist"
   public userData:any=''
   public isUpdate:any=false
+  public usermail:any
   constructor(private http:HttpClient) { }
 
 
@@ -39,4 +40,5 @@ export class DeshboardService {
   getpage(page:any){
     return this.http.get<any>(`${this.userlistUrl}/pagger/`+page)
   }
+  sendMail(data:any){return this.http.post(`${this.userUrl}/mail`,data)}
 }

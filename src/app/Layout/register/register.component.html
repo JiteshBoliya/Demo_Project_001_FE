@@ -6,22 +6,42 @@
                 <div class="social-container">
                     <a (click)="loginWithFacebook()" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a (click)="OnGoogleLogin()"  class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <!-- <a  class="social"><i class="fab fa-linkedin-in"></i></a> -->
+                    <a (click)="loginTwitter()" class="social"><i class="fab fa-twitter"></i></a>
                 </div>
                 <span>or use your email for registration</span>
-                <input type="text" placeholder="Name" formControlName="username" />
+                <!-- <input type="text" placeholder="Name" formControlName="username" />
                 <p *ngIf="!RegistrationForm.controls['username'].valid && RegistrationForm.controls['username'].touched" class="err">
-                <b>Username is required</b></p>
+                <b>Username is required</b></p> -->
 
-                <input type="email" placeholder="Email" formControlName="email" />
+                <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;margin: 0px; padding: 0px">
+                    <mat-label>Username</mat-label>
+                    <input matInput type="text" formControlName="username"/>
+                </mat-form-field>
+                <!-- <input type="email" placeholder="Email" formControlName="email" />
                 <p *ngIf="!RegistrationForm.controls['email'].valid && RegistrationForm.controls['email'].touched" class="err">
                     <b>Email is Invalid</b></p>
-                <input type="password" placeholder="Password" formControlName="password" />
+                     -->
+                    <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" formControlName="email"/>
+                    </mat-form-field>
+                
+
+
+                <!-- <input type="password" placeholder="Password" formControlName="password" />
                 <p *ngIf="!RegistrationForm.controls['password'].valid && RegistrationForm.controls['password'].touched" class="err">
-                  <!-- <b>Username is required</b> -->
-                </p>
-                <!-- <button type="submit" [disabled]="!RegistrationForm.valid">Sign Up</button> -->
-                <button type="submit" >Sign Up</button>
+                  <b>Username is required</b>
+                </p> -->
+                
+                <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password"/>
+                </mat-form-field>
+                              
+                
+                <button type="submit" [hidden]="!RegistrationForm.valid">Sign Up</button>
+                <p [hidden]="RegistrationForm.valid">Fill all above details</p>
+                <!-- <button type="submit" >Sign Up</button> -->
             </form>
         </div>
         <div class="form-container sign-in-container">
@@ -30,19 +50,30 @@
                 <div class="social-container">
                     <a (click)="loginWithFacebook()" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a (click)="OnGoogleLogin()" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <!-- <a  class="social"><i class="fab fa-linkedin-in"></i></a> -->
+                    <a (click)="loginTwitter()" class="social"><i class="fab fa-twitter"></i></a>
                 </div>
                 
                 <span>or use your account</span>
-                <input type="email" placeholder="Email" formControlName="email" />
+                <!-- <input type="email" placeholder="Email" formControlName="email" />
                 <p *ngIf="!LoginForm.controls['email'].valid && LoginForm.controls['email'].touched" class="err">
-                    <b>Email is Invalid</b></p>
-                <input type="password" placeholder="Password" formControlName="password" />
+                    <b>Email is Invalid</b></p> -->
+
+                    <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" formControlName="email"/>
+                    </mat-form-field>    
+
+                <!-- <input type="password" placeholder="Password" formControlName="password" />
                 <p *ngIf="!LoginForm.controls['password'].valid && LoginForm.controls['password'].touched" class="err">
                     <b>Password is required</b>
-                  </p>
+                  </p> -->
+                  <mat-form-field class="example-full-width" appearance="fill" style="width: 100%">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" formControlName="password"/>
+                </mat-form-field>
+
                 <!-- <a href="#">Forgot your password?</a> -->
-                <button type="submit" >Sign In</button>
+                <button type="submit" [hidden]="!LoginForm.valid" >Sign In</button>
                 
             </form>
         </div>

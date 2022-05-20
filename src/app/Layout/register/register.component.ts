@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
               private ref: ChangeDetectorRef,
               private authservice: AuthService, 
           private authguard: AuthGuard,
-          private snackBar: MatSnackBar
+          private snackBar: MatSnackBar,
           // private socialAuthService: SocialAuthService
           ) { }
 
@@ -29,9 +29,9 @@ export class RegisterComponent implements OnInit {
     this.container = document.getElementById('container')
 
     this.RegistrationForm = new FormGroup({
-      username: new FormControl(" ",Validators.required),
-      email: new FormControl(" ", [Validators.required,Validators.email]),
-      password: new FormControl(" ", Validators.required),
+      username: new FormControl("",Validators.required),
+      email: new FormControl("", [Validators.required,Validators.email]),
+      password: new FormControl("", Validators.required),
     })
     this.LoginForm = new FormGroup({
       email: new FormControl("", [Validators.required,Validators.email]),
@@ -65,12 +65,15 @@ onLoginbtn(){
     formData.append('password', this.LoginForm.get('password')?.value)
     
     this.authservice.LoginManual(formData).subscribe(res => {
-        // if(err) 
-        
-        this.snackBar.open('Login failed','close');
-          // localStorage.setItem('userid', res.user._id)
-          // localStorage.setItem('userData', res.user.token)
-          // this.router.navigate(['/home'])
+          localStorage.setItem('userid', res.user._id)
+          localStorage.setItem('userData', res.user.token)
+          this.router.navigate(['/home'])
+      },
+      err=>{
+        this.snackBar.open('Login failed','close', {
+          duration: 2000,
+          panelClass: ['failed']
+        });
       }
     )
 }
@@ -80,17 +83,17 @@ OnRegister(){
     formData.append('email', this.RegistrationForm.get('email')?.value)
     formData.append('password', this.RegistrationForm.get('password')?.value)
     this.authservice.RegisterManual(formData).subscribe(res => {
-          localStorage.setItem('userid', res.user._id)
-          localStorage.setItem('userData', res.user.token)
           this.RegistrationForm.reset()
-          // this.router.navigate([''])
           this.signInButton()
-
       }
     )
 }
 loginWithFacebook(): void {
   // this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
 }
-
+loginTwitter(){
+  this.authservice.twitterLogin().subscribe(res=>{
+    console.log(res);
+  })
+}
 }

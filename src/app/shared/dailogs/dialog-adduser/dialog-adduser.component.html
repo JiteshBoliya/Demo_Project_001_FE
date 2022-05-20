@@ -11,7 +11,8 @@
     <!-- <span>Profile Image</span><br /> -->
 
     <img
-      [src]="imageSrc"
+
+      [src]="imageSrc?imageSrc:'https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg'"
       class="img-circle"
       height="80px"
       width="80px"

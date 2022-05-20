@@ -40,19 +40,6 @@ export class DialogAdduserComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.userData=='')
-    {
-      this.userForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required,Validators.email]),
-      gender: new FormControl('', Validators.required),
-      mobileno: new FormControl('', Validators.required),
-      dob: new FormControl('', Validators.required),
-      file: new FormControl('', Validators.required)
-    })
-  }
-  else{
-    // this.userData=''
     this.userForm = new FormGroup({
       name: new FormControl(this.userData?this.userData.name:'', Validators.required),
       email: new FormControl(this.userData?this.userData.email:'', [Validators.required,Validators.email]),
@@ -61,10 +48,10 @@ export class DialogAdduserComponent implements OnInit {
       dob: new FormControl(this.userData?this.userData.dob:'', Validators.required),
       file: new FormControl(this.userData?this.userData.file[0]:'', Validators.required)
     })
-  }
+  
 
     
-    this.imageSrc="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+    this.imageSrc="https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg"
     
     this.deshboard.getUserlist().subscribe(res => {
       if(this.deshboard.userData!=''){
@@ -81,14 +68,14 @@ export class DialogAdduserComponent implements OnInit {
       }
       console.log(this.userData);
       
-      this.userForm = new FormGroup({
-        name: new FormControl(this.userData?this.userData.name:'', Validators.required),
-        email: new FormControl(this.userData?this.userData.email:'', [Validators.required,Validators.email]),
-        gender: new FormControl(this.userData?this.userData.gender:'', Validators.required),
-        mobileno: new FormControl(this.userData?this.userData.mobileno:'', Validators.required),
-        dob: new FormControl(this.userData?this.userData.dob:'', Validators.required),
-        file: new FormControl(this.userData?this.userData.file[0]:'', Validators.required)
-      })
+      // this.userForm = new FormGroup({
+      //   name: new FormControl(this.userData?this.userData.name:'', Validators.required),
+      //   email: new FormControl(this.userData?this.userData.email:'', [Validators.required,Validators.email]),
+      //   gender: new FormControl(this.userData?this.userData.gender:'', Validators.required),
+      //   mobileno: new FormControl(this.userData?this.userData.mobileno:'', Validators.required),
+      //   dob: new FormControl(this.userData?this.userData.dob:'', Validators.required),
+      //   file: new FormControl(this.userData?this.userData.file[0]:'', Validators.required)
+      // })
       this.userlist = res
     })
    

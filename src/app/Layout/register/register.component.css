@@ -72,16 +72,16 @@ form {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 50px;
+	padding: 0 20px;
 	height: 100%;
 	text-align: center;
 }
 
 input {
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
+	/* background-color: #eee; */
+	/* border: none; */
+	/* padding: 12px 15px; */
+	/* margin: 8px 0; */
 	width: 100%;
 }
 
@@ -252,4 +252,8 @@ footer a {
 	margin: 0px;
 	padding: 0px;
 	/* font-size: 8px; */
+}
+.failed{
+	background-color: red;
+	color: white;
 }

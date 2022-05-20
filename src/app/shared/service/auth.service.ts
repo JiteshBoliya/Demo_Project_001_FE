@@ -65,6 +65,10 @@ export class AuthService {
     }
   }
 
+  twitterLogin(){
+    return this.http.get<any>('http://localhost:3000/twitter')
+  }
+
 // checkLoginState() {
 //   FB.getLoginStatus(function(response) {
 //     statusChangeCallback(response);

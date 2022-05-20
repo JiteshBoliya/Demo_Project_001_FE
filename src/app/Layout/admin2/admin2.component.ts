@@ -18,17 +18,19 @@ export class Admin2Component implements OnInit {
   @ViewChild('fileInput') fileInput!: ElementRef;
   public userForm !: FormGroup;
   public filterForm !: FormGroup;
-  userData: any
-  user: any
-  image: any;
-  text: any;
-  path: any
-  imageSrc: any;
-  userlist: any;
+  userData!: any
+  user!: any
+  image!: any;
+  text!: any;
+  path!: any
+  imageSrc!: any;
+  userlist!: any;
   isUpdate: boolean = false;
-  lenth:any
-  paggerno:any
-  fakearray:any
+  lenth!:any
+  paggerno!:any
+  fakearray!:any
+  isSelected!:any
+  
   // colname!: boolean 
   // colimage!: boolean
   // colmobile!: boolean
@@ -55,6 +57,8 @@ export class Admin2Component implements OnInit {
     this.deshboard.getUserDetail(localStorage.getItem('userid')).subscribe(res => {
       this.user = res
     })
+    this.isSelected=0
+
     this.userForm = new FormGroup({
       name: new FormControl("", Validators.required),
       email: new FormControl("", Validators.required),
@@ -137,9 +141,13 @@ export class Admin2Component implements OnInit {
     // this.refreash()
   }
   getpagedata(pagerdata:any){
+    this.isSelected=pagerdata
     this.deshboard.getpage(pagerdata*3).subscribe(res=>{
       this.userlist=res
     })
+  }
+  pageActive(item:any){
+    return this.isSelected==item
   }
   refreash(){
   //   this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() => {
